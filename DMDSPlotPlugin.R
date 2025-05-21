@@ -31,6 +31,7 @@ pasilla_metadata <- read.table(paste(pfix, parameters["metadata", 2], sep="/"),
 pasilla_samples <- data.frame(sample_id = pasilla_metadata$SampleName, 
   group = pasilla_metadata$condition)
 d <- dmDSdata(counts = pasilla_counts, samples = pasilla_samples)
+write.csv(d@counts@unlistData, paste(outputfile, "csv", sep="."))
 pdf(outputfile)
 plotData(d)
 }
